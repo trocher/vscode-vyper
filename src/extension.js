@@ -27,12 +27,17 @@ var activeEditor;
 /** event funcs */
 async function onDidSave(document) {
     if (document.languageId != settings.LANGUAGE_ID) {
-        console.log("langid mismatch");
+        console.log("Language ID mismatch");
         return;
     }
-
+    const fileExtension = document.uri.fsPath.split('.').pop();
+    
     //always run on save
     if (settings.extensionConfig().compile.onSave) {
+        if (fileExtension !== "vy") {
+            console.log("Skipping compilation for interface file");
+            return;
+        }
         mod_compile.compileContractCommand(document);
     }
 }
