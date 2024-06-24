@@ -66,7 +66,7 @@ function checkVyper(source_file, callback) {
 
 // Execute vyper for single source file
 function execVyper(source_path, callback) {
-    const formats = ["abi", "bytecode", "bytecode_runtime"];
+    const formats = ["annotated_ast"];
     let escapedTarget;
     if (process.platform.startsWith("win")){
         //nasty windows shell..
