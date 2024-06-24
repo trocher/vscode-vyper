@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.0.16
+- fix: compilation for Vyper 0.4.x
+- fix: don't compile interface files
+- fix: correct static built-in hover information to match Vyper
+- updated snippets to Vyper 0.3.x and 0.4.x
+- updated syntax highlighting to Vyper 0.4.x
+- removed MythX
+
 ## 0.0.15
 - fix: typo in snippet `funcnonreentrant` #25
 

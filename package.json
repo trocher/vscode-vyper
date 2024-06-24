@@ -1,9 +1,9 @@
 {
     "name": "vscode-vyper",
-    "displayName": "Vyper",
+    "displayName": "Vyper: Syntax Highlighting",
     "description": "Ethereum Vyper language support for Visual Studio Code, forked from https://github.com/tintinweb/vscode-vyper which is no longer maintained",
     "license": "MIT",
-    "version": "0.0.15",
+    "version": "0.0.16",
     "keywords": [
         "vyper",
         "ethereum",
