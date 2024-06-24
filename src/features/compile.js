@@ -10,7 +10,6 @@ const vscode = require("vscode");
 const path = require("path");
 const exec = require("child_process").exec;
 const async = require("async");
-const mod_analyze = require("./analyze.js");
 const shellescape = require('shell-escape');
 const settings = require("../settings");
 
@@ -26,8 +25,7 @@ const VYPER_PATTERN = " **/*.{vy,v.py,vyper.py}";
 
 const compile = {};
 var diagnosticCollections = {
-    compiler: null,
-    mythx: null
+    compiler: null
 };
 
 compile.display = function (paths, options) {
@@ -190,60 +188,13 @@ function compileActiveFileCommand(contractFile) {
         .then(
             (success) => {
                 diagnosticCollections.compiler.delete(contractFile.uri);
-                diagnosticCollections.mythx.delete(contractFile.uri);
-                
                 if(settings.extensionConfig().compile.verbose){
                     vscode.window.showInformationMessage('[Compiler success] ' + Object.keys(success).join(","));
                 }
                 
-
-                // precedence: (1) vyperConfig, otherwise (2) process.env 
-                let password = settings.extensionConfig().analysis.mythx.password || process.env.MYTHX_PASSWORD;
-                let ethAddress = settings.extensionConfig().analysis.mythx.ethAddress || process.env.MYTHX_ETH_ADDRESS;
-
-                //set to trial?
-                if (ethAddress == "trial") {
-                    ethAddress = ""; // "0x0000000000000000000000000000000000000000" //@note tin: there's no trial :/
-                    password = "trial";
-                }
-
-
-                if (settings.extensionConfig().analysis.onSave && ethAddress && password) {
-                    //if mythx is configured
-                    // bytecode
-                    for (let contractKey in success) {
-                        mod_analyze.analyze.mythXjs(ethAddress, password, success[contractKey].bytecode, success[contractKey].deployedBytecode)
-                            .then(result => {
-                                let diagIssues = [];
-
-                                result.forEach(function (_result) {
-                                    _result.issues.forEach(function (issue) {
-                                        let shortmsg = `[${issue.severity}] ${issue.swcID}: ${issue.description.head}`;
-                                        let errormsg = `[${issue.severity}] ${issue.swcID}: ${issue.swcTitle}\n${issue.description.head}\n${issue.description.tail}\n\nCovered Instructions/Paths: ${_result.meta.coveredInstructions}/${_result.meta.coveredPaths}`;
-                                        let lineNr = 1;  // we did not submit any source so just pin it to line 0
-
-                                        diagIssues.push({
-                                            code: '',
-                                            message: shortmsg,
-                                            range: new vscode.Range(new vscode.Position(lineNr - 1, 0), new vscode.Position(lineNr - 1, 255)),
-                                            severity: mod_analyze.mythXSeverityToVSCodeSeverity[issue.severity],
-                                            source: errormsg,
-                                            relatedInformation: []
-                                        });
-                                    });
-                                });
-                                diagnosticCollections.mythx.set(contractFile.uri, diagIssues);
-                                vscode.window.showInformationMessage(`[MythX success] ${contractKey}: ${diagIssues.length} issues`);
-                            }).catch(err => {
-                                vscode.window.showErrorMessage('[MythX error] ' + err);
-                                console.log(err);
-                            });
-                    }
-                }
             },
             (errormsg) => {
                 diagnosticCollections.compiler.delete(contractFile.uri);
-                diagnosticCollections.mythx.delete(contractFile.uri);
                 if(settings.extensionConfig().compile.verbose){
                     vscode.window.showErrorMessage('[Compiler Error] ' + errormsg);
                 }
@@ -321,8 +272,6 @@ function init(context, type) {
     VYPER_ID = type;
     diagnosticCollections.compiler = vscode.languages.createDiagnosticCollection('Vyper Compiler');
     context.subscriptions.push(diagnosticCollections.compiler);
-    diagnosticCollections.mythx = vscode.languages.createDiagnosticCollection('MythX Security Platform');
-    context.subscriptions.push(diagnosticCollections.mythx);
     extensionContext = context;
 }
 

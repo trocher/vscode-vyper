@@ -1,9 +1,3 @@
-[<img width="200" alt="get in touch with Consensys Diligence" src="https://user-images.githubusercontent.com/2865694/56826101-91dcf380-685b-11e9-937c-af49c2510aa0.png">](https://diligence.consensys.net)<br/>
-<sup>
-[[  🌐  ](https://diligence.consensys.net)  [  📩  ](mailto:diligence@consensys.net)  [  🔥  ](https://consensys.github.io/diligence/)]
-</sup><br/><br/>
-
-
 
 # vscode-Vyper    
    
@@ -11,7 +5,7 @@
 
 Ethereum Vyper language support for Visual Studio Code
 
-[Marketplace](https://marketplace.visualstudio.com/items?itemName=tintinweb.vscode-vyper): `ext install tintinweb.vscode-vyper`
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=trocher.vscode-vyper): `ext install trocher.vscode-vyper`
 
 <sup>Also available on [vscode.dev](https://vscode.dev)! (compilation not yet supported)</sup> 
 
@@ -32,11 +26,7 @@ Note: Active features can be disabled by setting `Settings` → `Vyper` → `Mod
   * automatically compile contracts on save (`Settings` → `Vyper` → `Compile: On Save`)
   * compilation can be triggered by executing a vscode command (`cmd + shift + p` → `Vyper: Compile`)
   * vyper location/command can be customized (default assumes `vyper` is in `PATH`) (`Settings` → `Vyper` → `Command`)
-* Integrates with [MythX](https://www.mythx.io/#faq)
-  * [sign-up](https://www.mythx.io/#faq) with your ethereum address (username)
-  * set your username and password (`Settings` → `Vyper` → `MythX: Ethaddress` / `Settings` → `Vyper` → `MythX: Password` or `env.MYTHX_ETH_ADDRESS` / `env.MYTHX_PASSWORD`; configuration takes precedence)
-  * automatically analyze for security issues when saving the file (`Settings` → `Vyper` → `Analysis: On Save`)
-  
+
 ## Requirements
 
 * It is assumed that vyper is installed and generally available on the system (`pip install vyper`). In case vyper is not available in path or called in a virtualenv configure the vyper command in `Settings` → `Vyper` → `Command`
