@@ -83,7 +83,6 @@ function execVyper(source_path, callback) {
         escapedTarget = `${shellescape([source_path])}`; //is quoted.
     }
     const command = `${settings.extensionConfig().command} -f${formats.join(",")} ${escapedTarget}`;
-    //console.log(command);
     exec(command,
         { 'cwd': workspaceForFile(source_path) },
         function (err, stdout, stderr) {
@@ -113,15 +112,10 @@ function compileAll(options, callback) {
         function (source_path, c) {
             execVyper(source_path, function (err, compiled_contract) {
                 if (err) return c(err);
-                // remove first extension from filename
                 const extension = path.extname(source_path);
                 const basename = path.basename(source_path, extension);
 
-                // if extension is .py, remove second extension from filename
-                const contract_name =
-                    extension !== ".py" ?
-                        basename :
-                        path.basename(basename, path.extname(basename));
+                const contract_name = basename;
 
                 const contract_definition = {
                     contract_name: contract_name,
@@ -213,26 +207,6 @@ function compileActiveFileCommand(contractFile) {
                     password = "trial";
                 }
 
-                //not set and never asked
-                if (false && ethAddress == "initial") { //@note: no more trial
-                    if (typeof extensionContext.globalState.get("vyper.mythx.account.trial") === "undefined") {
-                        vscode.window.showInformationMessage('[MythX ] Enable MythX security analysis trial mode?', "Free Trial", "Tell me more!", "No, Thanks!")
-                            .then(choice => {
-                                if (choice == "Free Trial") {
-                                    extensionContext.globalState.update("vyper.mythx.account.trial", "useTrial");
-                                    return compileActiveFileCommand(contractFile);
-                                } else if (choice == "Tell me more!") {
-                                    vscode.env.openExternal(vscode.Uri.parse("https://www.mythx.io/#faq"));
-                                } else {
-                                    extensionContext.globalState.update("vyper.mythx.account.trial", "noAsk");
-                                }
-                            });
-                    }
-                    if (extensionContext.globalState.get("vyper.mythx.account.trial") && extensionContext.globalState.get("vyper.mythx.account.trial") == "useTrial") {
-                        ethAddress = "0x0000000000000000000000000000000000000000";
-                        password = "trial";
-                    }
-                }
 
                 if (settings.extensionConfig().analysis.onSave && ethAddress && password) {
                     //if mythx is configured
