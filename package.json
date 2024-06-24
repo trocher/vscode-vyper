@@ -11,7 +11,7 @@
         "compiler",
         "security"
     ],
-    "publisher": "tintinweb",
+    "publisher": "trocher",
     "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.20.2"
@@ -21,11 +21,11 @@
         "Snippets"
     ],
     "bugs": {
-        "url": "https://github.com/tintinweb/vscode-vyper/issues"
+        "url": "https://github.com/trocher/vscode-vyper/issues"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/tintinweb/vscode-vyper"
+        "url": "https://github.com/trocher/vscode-vyper"
     },
     "activationEvents": [
         "onLanguage:vyper",
@@ -59,7 +59,31 @@
         "snippets": [
             {
                 "language": "vyper",
-                "path": "./snippets/vyper.json"
+                "path": "./snippets/expr_builtins.json"
+            },
+            {
+                "language": "vyper",
+                "path": "./snippets/stmt_builtins.json"
+            },
+            {
+                "language": "vyper",
+                "path": "./snippets/expressions.json"
+            },
+            {
+                "language": "vyper",
+                "path": "./snippets/statements.json"
+            },
+            {
+                "language": "vyper",
+                "path": "./snippets/module.json"
+            },
+            {
+                "language": "vyper",
+                "path": "./snippets/other.json"
+            },
+            {
+                "language": "vyper",
+                "path": "./snippets/types.json"
             }
         ],
         "configuration": {
@@ -143,7 +167,7 @@
         "shell-escape": "^0.2.0"
     },
     "devDependencies": {
-        "@vscode/test-web": "^0.0.27",
+        "@vscode/test-web": "^0.0.52",
         "webpack": "^5.66.0",
         "webpack-cli": "^4.9.1"
     }
