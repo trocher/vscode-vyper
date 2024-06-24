@@ -1,5 +1,5 @@
 
-# vscode-Vyper    
+# vscode-Vyper
    
 ![img](./images/icon.png)
 
@@ -22,14 +22,14 @@ Note: Active features can be disabled by setting `Settings` → `Vyper` → `Mod
 * Provides Security augmented decorations (`Settings` → `Vyper` → `Decoration: Enable`)
 * Provides Hover information (`Settings` → `Vyper` → `Hover: Enable`)
 * Provides Code snippets for common language constructs
-* Integrates with the vyper compiler (based on `truffle-compile-vyper`)
+* Integrates with the vyper compiler
   * automatically compile contracts on save (`Settings` → `Vyper` → `Compile: On Save`)
   * compilation can be triggered by executing a vscode command (`cmd + shift + p` → `Vyper: Compile`)
   * vyper location/command can be customized (default assumes `vyper` is in `PATH`) (`Settings` → `Vyper` → `Command`)
 
 ## Requirements
 
-* It is assumed that vyper is installed and generally available on the system (`pip install vyper`). In case vyper is not available in path or called in a virtualenv configure the vyper command in `Settings` → `Vyper` → `Command`
+* It is assumed that vyper is installed and generally available on the system (`pip3 install vyper`). In case vyper is not available in path or called in a virtualenv configure the vyper command in `Settings` → `Vyper` → `Command`
 
 ## Tour
 
@@ -59,7 +59,7 @@ Note: Active features can be disabled by setting `Settings` → `Vyper` → `Mod
 
 #### Snippets
 
-* Quickly create `constructor`, `fallback` function, `methods`, `structs`, ... as you type. Select the snippet from the suggestion box. See [snippets/vyper.json](./snippets/vyper.json) for a list of available snippets.
+* Quickly create `constructor`, `fallback` function, `methods`, `structs`, ... as you type. Select the snippet from the suggestion box. See [snippets/](./snippets/) for a list of available snippets.
 * start typing ...
 
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/2865694/54860223-6e340400-4d17-11e9-8b21-49deed0db4db.png">

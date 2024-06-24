@@ -14,7 +14,6 @@ const shellescape = require('shell-escape');
 const settings = require("../settings");
 
 
-var extensionContext;
 var compiler = {
     name: settings.LANGUAGE_ID,
     version: null
@@ -272,7 +271,6 @@ function init(context, type) {
     VYPER_ID = type;
     diagnosticCollections.compiler = vscode.languages.createDiagnosticCollection('Vyper Compiler');
     context.subscriptions.push(diagnosticCollections.compiler);
-    extensionContext = context;
 }
 
 module.exports = {
