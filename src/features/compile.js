@@ -65,7 +65,12 @@ function checkVyper(source_file, callback) {
 
 // Execute vyper for single source file
 function execVyper(source_path, callback) {
-    const formats = ["annotated_ast"];
+    let formats;
+    if (compiler.version.startsWith("0.4")) {
+        formats = ["annotated_ast"];
+    } else {
+        formats = ["bytecode"];
+    }
     let escapedTarget;
     if (process.platform.startsWith("win")){
         //nasty windows shell..
@@ -117,10 +122,6 @@ function compileAll(options, callback) {
                 const contract_definition = {
                     contract_name: contract_name,
                     sourcePath: source_path,
-
-                    abi: compiled_contract.abi,
-                    bytecode: compiled_contract.bytecode,
-                    deployedBytecode: compiled_contract.bytecode_runtime,
 
                     compiler: compiler
                 };
