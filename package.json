@@ -1,6 +1,6 @@
 {
     "name": "vyper-syntax",
-    "displayName": "Vyper Syntax Highlighting",
+    "displayName": "Vyper: Syntax Highlighting",
     "description": "Vyper language support for Visual Studio Code",
     "license": "MIT",
     "version": "0.0.16",
