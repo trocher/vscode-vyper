@@ -1,5 +1,5 @@
 
-# VSCode Vyper
+# Vyper Syntax Highlighting
    
 ![img](./images/icon.png)
 
