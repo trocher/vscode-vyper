@@ -5,7 +5,7 @@
 
 Ethereum Vyper language support for Visual Studio Code
 
-[Marketplace](https://marketplace.visualstudio.com/items?itemName=trocher.vscode-vyper): `ext install trocher.vscode-vyper`
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=trocher.vyper-syntax): `ext install trocher.vyper-syntax`
 
 Forked from https://github.com/tintinweb/vscode-vyper which is no longer maintained.
 

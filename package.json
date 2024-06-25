@@ -15,7 +15,7 @@
     "icon": "images/icon.png",
     "galleryBanner": {
         "color": "#EDE5D5",
-        "theme": "dark"
+        "theme": "light"
     },
     "engines": {
         "vscode": "^1.87.0"
