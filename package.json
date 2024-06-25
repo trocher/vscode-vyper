@@ -3,7 +3,7 @@
     "displayName": "Vyper: Syntax Highlighting",
     "description": "Vyper language support for Visual Studio Code",
     "license": "MIT",
-    "version": "0.0.16",
+    "version": "0.0.17",
     "keywords": [
         "vyper",
         "ethereum",

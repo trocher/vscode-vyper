@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.17
+- fix: broken links in the README.md and banner theme on the marketplace
+
 ## 0.0.16
 - fix: compilation for Vyper 0.4.x
 - fix: don't compile interface files
